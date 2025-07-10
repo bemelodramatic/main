@@ -1,0 +1,616 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>K-Drama Universe 2025 🌟</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(45deg, #0f0c29, #302b63, #24243e);
+            min-height: 100vh;
+            overflow-x: hidden;
+            position: relative;
+            color: white;
+        }
+
+        /* Starfield Background */
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: 
+                radial-gradient(2px 2px at 20px 30px, #eee, transparent),
+                radial-gradient(2px 2px at 40px 70px, rgba(255,255,255,0.8), transparent),
+                radial-gradient(1px 1px at 90px 40px, #fff, transparent),
+                radial-gradient(1px 1px at 130px 80px, rgba(255,255,255,0.6), transparent),
+                radial-gradient(2px 2px at 160px 30px, #ddd, transparent);
+            background-repeat: repeat;
+            background-size: 200px 100px;
+            animation: sparkle 3s linear infinite;
+            z-index: 1;
+            pointer-events: none;
+        }
+
+        @keyframes sparkle {
+            from { transform: translateY(0px); }
+            to { transform: translateY(-100px); }
+        }
+
+        .header {
+            position: relative;
+            z-index: 10;
+            text-align: center;
+            padding: 40px 20px;
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .header h1 {
+            font-size: 3.5em;
+            background: linear-gradient(45deg, #ff6b6b, #4ecdc4, #45b7d1, #96ceb4, #ffeaa7);
+            background-size: 400% 400%;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            animation: gradientText 4s ease infinite;
+            margin-bottom: 10px;
+            text-shadow: 0 0 30px rgba(255, 255, 255, 0.5);
+        }
+
+        @keyframes gradientText {
+            0%, 100% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+        }
+
+        .subtitle {
+            font-size: 1.2em;
+            opacity: 0.9;
+            margin-bottom: 20px;
+        }
+
+        .genre-legend {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(15px);
+            border-radius: 15px;
+            padding: 20px;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            z-index: 100;
+            max-width: 250px;
+        }
+
+        .legend-title {
+            font-size: 1.1em;
+            font-weight: bold;
+            margin-bottom: 15px;
+            text-align: center;
+        }
+
+        .legend-item {
+            display: flex;
+            align-items: center;
+            margin-bottom: 8px;
+            font-size: 0.9em;
+        }
+
+        .legend-color {
+            width: 16px;
+            height: 16px;
+            border-radius: 50%;
+            margin-right: 10px;
+            border: 2px solid rgba(255, 255, 255, 0.3);
+        }
+
+        .bubble-container {
+            position: relative;
+            z-index: 5;
+            height: calc(100vh - 200px);
+            overflow: hidden;
+        }
+
+        .bubble {
+            position: absolute;
+            border-radius: 50%;
+            cursor: pointer;
+            backdrop-filter: blur(10px);
+            border: 2px solid rgba(255, 255, 255, 0.3);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            font-weight: bold;
+            text-shadow: 0 0 10px rgba(0, 0, 0, 0.7);
+            transition: all 0.3s ease;
+            animation: float 6s ease-in-out infinite;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+        }
+
+        .bubble:hover {
+            transform: scale(1.1);
+            box-shadow: 0 12px 40px rgba(255, 255, 255, 0.3);
+            border-color: rgba(255, 255, 255, 0.6);
+        }
+
+        .bubble.clicked {
+            animation: pulse 0.6s ease-out;
+        }
+
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.2); }
+            100% { transform: scale(1); }
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0px) rotate(0deg); }
+            33% { transform: translateY(-20px) rotate(120deg); }
+            66% { transform: translateY(10px) rotate(240deg); }
+        }
+
+        .bubble-title {
+            font-size: 0.9em;
+            padding: 10px;
+            line-height: 1.2;
+        }
+
+        /* Genre Colors */
+        .romance { background: linear-gradient(135deg, rgba(255, 107, 107, 0.8), rgba(255, 158, 158, 0.8)); }
+        .thriller { background: linear-gradient(135deg, rgba(44, 44, 84, 0.8), rgba(76, 76, 109, 0.8)); }
+        .comedy { background: linear-gradient(135deg, rgba(255, 165, 0, 0.8), rgba(255, 193, 73, 0.8)); }
+        .fantasy { background: linear-gradient(135deg, rgba(155, 89, 182, 0.8), rgba(142, 68, 173, 0.8)); }
+        .action { background: linear-gradient(135deg, rgba(231, 76, 60, 0.8), rgba(192, 57, 43, 0.8)); }
+        .drama { background: linear-gradient(135deg, rgba(52, 152, 219, 0.8), rgba(41, 128, 185, 0.8)); }
+        .mystery { background: linear-gradient(135deg, rgba(26, 188, 156, 0.8), rgba(22, 160, 133, 0.8)); }
+        .slice-of-life { background: linear-gradient(135deg, rgba(241, 196, 15, 0.8), rgba(243, 156, 18, 0.8)); }
+
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.8);
+            z-index: 1000;
+            backdrop-filter: blur(5px);
+        }
+
+        .modal-content {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0.05));
+            backdrop-filter: blur(20px);
+            border-radius: 20px;
+            padding: 40px;
+            max-width: 500px;
+            width: 90%;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+            animation: modalAppear 0.3s ease-out;
+        }
+
+        @keyframes modalAppear {
+            from { 
+                opacity: 0; 
+                transform: translate(-50%, -50%) scale(0.8); 
+            }
+            to { 
+                opacity: 1; 
+                transform: translate(-50%, -50%) scale(1); 
+            }
+        }
+
+        .close-btn {
+            position: absolute;
+            top: 15px;
+            right: 20px;
+            font-size: 2em;
+            cursor: pointer;
+            color: rgba(255, 255, 255, 0.7);
+            transition: color 0.3s ease;
+        }
+
+        .close-btn:hover {
+            color: white;
+        }
+
+        .modal-title {
+            font-size: 2em;
+            margin-bottom: 15px;
+            background: linear-gradient(45deg, #ff6b6b, #4ecdc4);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            font-weight: bold;
+        }
+
+        .modal-genre {
+            display: inline-block;
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-size: 0.9em;
+            margin-bottom: 15px;
+            font-weight: bold;
+        }
+
+        .modal-description {
+            line-height: 1.6;
+            margin-bottom: 20px;
+            opacity: 0.9;
+        }
+
+        .modal-details {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        .detail-item {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 10px 15px;
+            border-radius: 10px;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .detail-label {
+            font-weight: bold;
+            font-size: 0.9em;
+            opacity: 0.8;
+            margin-bottom: 5px;
+        }
+
+        .detail-value {
+            font-size: 1.1em;
+        }
+
+        @media (max-width: 768px) {
+            .header h1 {
+                font-size: 2.5em;
+            }
+            
+            .genre-legend {
+                position: relative;
+                margin: 20px;
+                max-width: none;
+            }
+            
+            .bubble {
+                min-width: 80px;
+                min-height: 80px;
+            }
+            
+            .bubble-title {
+                font-size: 0.8em;
+                padding: 5px;
+            }
+            
+            .modal-content {
+                padding: 30px 20px;
+            }
+            
+            .modal-details {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .instructions {
+            position: fixed;
+            bottom: 20px;
+            left: 20px;
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(15px);
+            border-radius: 15px;
+            padding: 15px;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            z-index: 100;
+            max-width: 300px;
+            font-size: 0.9em;
+            opacity: 0.8;
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1>K-Drama Universe 2025</h1>
+        <p class="subtitle">Discover the most anticipated Korean dramas of 2025 ✨</p>
+    </div>
+
+    <div class="genre-legend">
+        <div class="legend-title">🎭 Genre Colors</div>
+        <div class="legend-item">
+            <div class="legend-color romance"></div>
+            <span>Romance</span>
+        </div>
+        <div class="legend-item">
+            <div class="legend-color thriller"></div>
+            <span>Thriller</span>
+        </div>
+        <div class="legend-item">
+            <div class="legend-color comedy"></div>
+            <span>Comedy</span>
+        </div>
+        <div class="legend-item">
+            <div class="legend-color fantasy"></div>
+            <span>Fantasy</span>
+        </div>
+        <div class="legend-item">
+            <div class="legend-color action"></div>
+            <span>Action</span>
+        </div>
+        <div class="legend-item">
+            <div class="legend-color drama"></div>
+            <span>Drama</span>
+        </div>
+        <div class="legend-item">
+            <div class="legend-color mystery"></div>
+            <span>Mystery</span>
+        </div>
+        <div class="legend-item">
+            <div class="legend-color slice-of-life"></div>
+            <span>Slice of Life</span>
+        </div>
+    </div>
+
+    <div class="instructions">
+        💫 Click on any floating bubble to learn more about these exciting 2025 K-dramas!
+    </div>
+
+    <div class="bubble-container" id="bubbleContainer">
+        <!-- Bubbles will be generated by JavaScript -->
+    </div>
+
+    <div class="modal" id="modal">
+        <div class="modal-content">
+            <span class="close-btn" id="closeBtn">&times;</span>
+            <h2 class="modal-title" id="modalTitle"></h2>
+            <div class="modal-genre" id="modalGenre"></div>
+            <p class="modal-description" id="modalDescription"></p>
+            <div class="modal-details">
+                <div class="detail-item">
+                    <div class="detail-label">Network</div>
+                    <div class="detail-value" id="modalNetwork"></div>
+                </div>
+                <div class="detail-item">
+                    <div class="detail-label">Status</div>
+                    <div class="detail-value" id="modalStatus"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const dramas = [
+            {
+                title: "Squid Game 3",
+                genre: "thriller",
+                description: "The highly anticipated third season of the global phenomenon continues the deadly survival games with new twisted challenges and deeper exploration of human nature.",
+                status: "Coming 2025",
+                network: "Netflix"
+            },
+            {
+                title: "When Life Gives You Tangerines",
+                genre: "romance",
+                description: "A heartwarming romantic comedy about a citrus farmer who finds unexpected love when a city marketing executive comes to help save their family farm.",
+                status: "Coming 2025",
+                network: "Netflix"
+            },
+            {
+                title: "Weak Hero Class 2",
+                genre: "action",
+                description: "The sequel to the hit series follows new students facing intense school violence and bullying, with more intense action sequences and character development.",
+                status: "Coming 2025",
+                network: "Wavve"
+            },
+            {
+                title: "The Haunted Palace",
+                genre: "mystery",
+                description: "A supernatural mystery thriller about paranormal investigators uncovering dark secrets in an ancient Korean palace with a haunted past.",
+                status: "Coming 2025",
+                network: "MBC"
+            },
+            {
+                title: "Way Back Love",
+                genre: "romance",
+                description: "A nostalgic romance drama about childhood sweethearts who reunite after 20 years and must navigate their complicated past and present feelings.",
+                status: "Coming 2025",
+                network: "tvN"
+            },
+            {
+                title: "Melo Movie",
+                genre: "drama",
+                description: "A meta-drama about actors filming a melodrama who begin to blur the lines between their on-screen and real-life relationships.",
+                status: "Coming 2025",
+                network: "JTBC"
+            },
+            {
+                title: "Love Scout",
+                genre: "romance",
+                description: "A unique romance about a talent scout for a dating agency who helps others find love but struggles with their own romantic life.",
+                status: "Coming 2025",
+                network: "SBS"
+            },
+            {
+                title: "Two Women",
+                genre: "drama",
+                description: "A powerful drama exploring the complex friendship and rivalry between two ambitious women in the corporate world, tackling themes of success and betrayal.",
+                status: "Coming 2025",
+                network: "tvN"
+            },
+            {
+                title: "Can This Love Be Translated",
+                genre: "romance",
+                description: "A charming romantic comedy about a Korean-American translator who returns to Seoul and falls for a bestselling author whose works she translates.",
+                status: "Coming 2025",
+                network: "Netflix"
+            },
+            {
+                title: "Spring of Youth",
+                genre: "slice-of-life",
+                description: "A coming-of-age slice-of-life drama following high school students as they navigate friendship, first love, and the pressures of academic life.",
+                status: "Coming 2025",
+                network: "KBS"
+            },
+            {
+                title: "Ball Boy Tactics",
+                genre: "comedy",
+                description: "A hilarious sports comedy about an underdog tennis team and their ingenious ball boy whose unconventional strategies lead them to unexpected victories.",
+                status: "Coming 2025",
+                network: "OCN"
+            },
+            {
+                title: "Newtopia",
+                genre: "fantasy",
+                description: "A fantasy romance about a woman who discovers a parallel utopian world where she must choose between her perfect life there and her imperfect reality.",
+                status: "Coming 2025",
+                network: "Coupang Play"
+            },
+            {
+                title: "Tempest",
+                genre: "fantasy",
+                description: "An epic fantasy historical drama about ancient Korean shamans with supernatural powers who must protect the kingdom from dark mystical forces.",
+                status: "Coming 2025",
+                network: "MBC"
+            },
+            {
+                title: "Cashero",
+                genre: "action",
+                description: "A superhero action comedy about an ordinary convenience store worker who gains superpowers and becomes an unlikely hero fighting corporate corruption.",
+                status: "Coming 2025",
+                network: "Netflix"
+            },
+            {
+                title: "All of Us Are Dead 2",
+                genre: "thriller",
+                description: "The zombie apocalypse continues in this thrilling sequel as survivors face new threats and the mystery behind the outbreak deepens.",
+                status: "Coming 2025",
+                network: "Netflix"
+            }
+        ];
+
+        function getRandomPosition() {
+            const container = document.getElementById('bubbleContainer');
+            const containerWidth = container.offsetWidth;
+            const containerHeight = container.offsetHeight;
+            
+            return {
+                x: Math.random() * (containerWidth - 150),
+                y: Math.random() * (containerHeight - 150)
+            };
+        }
+
+        function getRandomSize() {
+            return Math.random() * 50 + 100; // Between 100px and 150px
+        }
+
+        function createBubble(drama, index) {
+            const bubble = document.createElement('div');
+            bubble.className = `bubble ${drama.genre}`;
+            
+            const position = getRandomPosition();
+            const size = getRandomSize();
+            
+            bubble.style.left = position.x + 'px';
+            bubble.style.top = position.y + 'px';
+            bubble.style.width = size + 'px';
+            bubble.style.height = size + 'px';
+            bubble.style.animationDelay = (index * 0.2) + 's';
+            
+            bubble.innerHTML = `<div class="bubble-title">${drama.title}</div>`;
+            
+            bubble.addEventListener('click', () => {
+                bubble.classList.add('clicked');
+                setTimeout(() => bubble.classList.remove('clicked'), 600);
+                showModal(drama);
+            });
+            
+            return bubble;
+        }
+
+        function showModal(drama) {
+            const modal = document.getElementById('modal');
+            document.getElementById('modalTitle').textContent = drama.title;
+            document.getElementById('modalGenre').textContent = drama.genre.charAt(0).toUpperCase() + drama.genre.slice(1);
+            document.getElementById('modalGenre').className = `modal-genre ${drama.genre}`;
+            document.getElementById('modalDescription').textContent = drama.description;
+            document.getElementById('modalNetwork').textContent = drama.network;
+            document.getElementById('modalStatus').textContent = drama.status;
+            
+            modal.style.display = 'block';
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeModal() {
+            const modal = document.getElementById('modal');
+            modal.style.display = 'none';
+            document.body.style.overflow = 'auto';
+        }
+
+        function initializeBubbles() {
+            const container = document.getElementById('bubbleContainer');
+            dramas.forEach((drama, index) => {
+                const bubble = createBubble(drama, index);
+                container.appendChild(bubble);
+            });
+        }
+
+        // Event listeners
+        document.getElementById('closeBtn').addEventListener('click', closeModal);
+        document.getElementById('modal').addEventListener('click', (e) => {
+            if (e.target.id === 'modal') {
+                closeModal();
+            }
+        });
+
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape') {
+                closeModal();
+            }
+        });
+
+        // Handle window resize
+        window.addEventListener('resize', () => {
+            const container = document.getElementById('bubbleContainer');
+            const bubbles = container.querySelectorAll('.bubble');
+            
+            bubbles.forEach(bubble => {
+                const position = getRandomPosition();
+                bubble.style.left = position.x + 'px';
+                bubble.style.top = position.y + 'px';
+            });
+        });
+
+        // Initialize the app
+        document.addEventListener('DOMContentLoaded', () => {
+            initializeBubbles();
+        });
+
+        // Add floating animation variants
+        function addRandomAnimations() {
+            const bubbles = document.querySelectorAll('.bubble');
+            bubbles.forEach((bubble, index) => {
+                const duration = 4 + Math.random() * 4; // 4-8 seconds
+                const delay = Math.random() * 2; // 0-2 seconds delay
+                bubble.style.animationDuration = duration + 's';
+                bubble.style.animationDelay = delay + 's';
+            });
+        }
+
+        // Call after bubbles are created
+        setTimeout(addRandomAnimations, 100);
+    </script>
+</body>
+</html>
