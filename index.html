@@ -1,27 +1,168 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Flower Blooms</title>
-  <link rel="stylesheet" href="style.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lofi Vibes • Chill Music Station</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
 </head>
 <body>
-  <div class="container">
-    <h1 class="title">Flower Blooms</h1>
+    <div class="background-overlay"></div>
+    
+    <header class="header">
+        <div class="container">
+            <div class="logo">
+                <i class="fas fa-record-vinyl"></i>
+                <span>Lofi Vibes</span>
+            </div>
+            <nav class="nav">
+                <a href="#" class="nav-item active">Home</a>
+                <a href="#" class="nav-item">Playlists</a>
+                <a href="#" class="nav-item">About</a>
+            </nav>
+        </div>
+    </header>
 
-    <!-- Flower graphic assembled with CSS -->
-    <div class="flower">
-      <div class="petal one"></div>
-      <div class="petal two"></div>
-      <div class="petal three"></div>
-      <div class="petal four"></div>
-      <div class="petal five"></div>
-      <div class="petal six"></div>
-      <div class="center"></div>
+    <main class="main">
+        <div class="container">
+            <section class="hero">
+                <div class="hero-content">
+                    <h1 class="hero-title">Find Your Calm</h1>
+                    <p class="hero-subtitle">Immerse yourself in carefully curated lofi beats and ambient sounds</p>
+                    <button class="play-button" onclick="togglePlaylist()">
+                        <i class="fas fa-play"></i>
+                        Start Listening
+                    </button>
+                </div>
+                <div class="vinyl-container">
+                    <div class="vinyl-record">
+                        <div class="vinyl-label">
+                            <div class="label-text">LOFI</div>
+                            <div class="label-subtext">VIBES</div>
+                        </div>
+                        <div class="vinyl-grooves"></div>
+                    </div>
+                    <div class="vinyl-arm"></div>
+                </div>
+            </section>
+
+            <section class="playlist-section">
+                <h2 class="section-title">Today's Playlist</h2>
+                <div class="playlist-grid">
+                    <div class="track-card" onclick="playTrack(0)">
+                        <div class="track-cover">
+                            <div class="cover-art cover-1"></div>
+                            <div class="play-overlay">
+                                <i class="fas fa-play"></i>
+                            </div>
+                        </div>
+                        <div class="track-info">
+                            <h3 class="track-title">Midnight Rain</h3>
+                            <p class="track-artist">Chill Collective</p>
+                            <span class="track-duration">3:42</span>
+                        </div>
+                    </div>
+
+                    <div class="track-card" onclick="playTrack(1)">
+                        <div class="track-cover">
+                            <div class="cover-art cover-2"></div>
+                            <div class="play-overlay">
+                                <i class="fas fa-play"></i>
+                            </div>
+                        </div>
+                        <div class="track-info">
+                            <h3 class="track-title">Coffee Shop Dreams</h3>
+                            <p class="track-artist">Lazy Sunday</p>
+                            <span class="track-duration">4:15</span>
+                        </div>
+                    </div>
+
+                    <div class="track-card" onclick="playTrack(2)">
+                        <div class="track-cover">
+                            <div class="cover-art cover-3"></div>
+                            <div class="play-overlay">
+                                <i class="fas fa-play"></i>
+                            </div>
+                        </div>
+                        <div class="track-info">
+                            <h3 class="track-title">Study Flow</h3>
+                            <p class="track-artist">Focus Beats</p>
+                            <span class="track-duration">5:23</span>
+                        </div>
+                    </div>
+
+                    <div class="track-card" onclick="playTrack(3)">
+                        <div class="track-cover">
+                            <div class="cover-art cover-4"></div>
+                            <div class="play-overlay">
+                                <i class="fas fa-play"></i>
+                            </div>
+                        </div>
+                        <div class="track-info">
+                            <h3 class="track-title">Sunset Vibes</h3>
+                            <p class="track-artist">Ambient Notes</p>
+                            <span class="track-duration">4:01</span>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <!-- Spotify-style Music Player -->
+    <div class="music-player">
+        <div class="player-container">
+            <div class="track-section">
+                <div class="current-cover">
+                    <div class="cover-art cover-1"></div>
+                </div>
+                <div class="current-info">
+                    <div class="current-title">Midnight Rain</div>
+                    <div class="current-artist">Chill Collective</div>
+                </div>
+                <button class="like-button">
+                    <i class="far fa-heart"></i>
+                </button>
+            </div>
+
+            <div class="controls-section">
+                <div class="control-buttons">
+                    <button class="control-btn" onclick="previousTrack()">
+                        <i class="fas fa-step-backward"></i>
+                    </button>
+                    <button class="play-pause-btn" onclick="togglePlay()">
+                        <i class="fas fa-play" id="playIcon"></i>
+                    </button>
+                    <button class="control-btn" onclick="nextTrack()">
+                        <i class="fas fa-step-forward"></i>
+                    </button>
+                </div>
+                <div class="progress-section">
+                    <span class="time-current">0:00</span>
+                    <div class="progress-bar">
+                        <div class="progress-fill"></div>
+                        <div class="progress-handle"></div>
+                    </div>
+                    <span class="time-total">3:42</span>
+                </div>
+            </div>
+
+            <div class="volume-section">
+                <button class="control-btn">
+                    <i class="fas fa-list"></i>
+                </button>
+                <button class="control-btn">
+                    <i class="fas fa-volume-up"></i>
+                </button>
+                <div class="volume-bar">
+                    <div class="volume-fill"></div>
+                </div>
+            </div>
+        </div>
     </div>
 
-    <p>Flowers brighten up our lives in countless ways. Enjoy this blossoming animation!</p>
-  </div>
+    <script src="script.js"></script>
 </body>
 </html>
